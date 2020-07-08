@@ -1,0 +1,31 @@
+{
+  "name": "c-c",
+  "version": "0.0.0",
+  "description": "Atomic CSS in JS at compile-time",
+  "main": "dist/c-c.js",
+  "module": "dist/c-c.esm.js",
+  "umd:main": "dist/c-c.umd.js",
+  "unpkg": "dist/c-c.umd.js",
+  "source": "index.js",
+  "typings": "index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git@gc-victor:gc-victor/c-c.git"
+  },
+  "keywords": [
+    "atomic-classes",
+    "atomic-css",
+    "css",
+    "css-in-js",
+    "functional-css",
+    "utility-classes"
+  ],
+  "author": "Víctor García",
+  "license": "MIT",
+  "devDependencies": {
+    "csstype": "2.6.10",
+    "esm": "3.2.25",
+    "prettier": "2.0.5",
+    "t-t": "git+https://github.com/gc-victor/t-t.git#master"
+  }
+}
