@@ -13,6 +13,9 @@ build : ## Build distribution files
 	rm -rf dist || exit $? ; \
 	npx microbundle --output dist || exit $? ; \
 
+example : ## Execute macro
+	npx --node-arg '-r esm' babel -d macro/output macro/example.js || exit $? ;\
+
 format : ## Enforces a consistent style by parsing your code and re-printing it
 	npx prettier --write "*.js" ;\
 
@@ -62,8 +65,13 @@ release-major-beta : ## Release a new major beta version
 	make release-beta || exit $? ;\
 	([ $$? -eq 0 ] && echo "✓ Released new major $(VERSION)" || exit 1) ;\
 
-test : ## Execute tests
+test: test-macro test-runtime ## Execute all the tests
+
+test-runtime : ## Execute run-time tests
 	node -r esm index.test || exit $? ;\
+
+test-macro : example ## Execute test macro
+	node -r esm macro/index.test || exit $? ;\
 
 test-watch : test ## Execute tests on watch mode
 	npx chokidar-cli "**/*.js" -c "make test" || exit $? ;\

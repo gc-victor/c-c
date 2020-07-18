@@ -1,6 +1,6 @@
 # c-c
 
-Tiny CSS-in-JS atomic classes at run-time.
+Tiny CSS-in-JS atomic classes at run-time and compile-time.
 
 ## Let's Play
 
@@ -10,7 +10,7 @@ Create your first styles. Each declaration will return a class name and inject t
 c({
     padding: '1rem', 
     marginTop: '1rem'
-}); 
+});
 ```
 
 Returns:
@@ -56,6 +56,38 @@ Returns:
 ```css
 .c4218071375{padding:1rem}
 ```
+
+## Compile time
+
+You have to import the macro to use c-c at compile time.
+```javascript
+import { c } from 'c-c/macro';
+```
+
+You have to have installed [babeljs](https://babeljs.io/) and [babel-plugin-macros](https://github.com/kentcdodds/babel-plugin-macros) and add the last one
+to the babel plugins config.
+
+It will generate a `styles.css` file in your current working directory.
+
+Your code will be transformed from:
+
+```javascript
+import { c } from 'c-c/macro';
+
+const css0 = c({ padding: 0, margin: 0 });
+const css1 = c({ padding: '1rem' });
+const css2 = c({ padding: '1rem' });
+```
+
+To:
+
+```javascript
+const css0 = "c2343579090 c2342591469";
+const css1 = "c4218071375";
+const css2 = "c4218071375";
+```
+
+As you can see, the import is removed, and the classes names have replaced the function.
 
 ## Extra ball
 

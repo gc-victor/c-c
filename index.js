@@ -1,5 +1,7 @@
 let stylesheet;
-let cache = '';
+let cache = {
+    css: ''
+};
 
 export function c(rules) {
     const { className, css } = parse({ obj: rules });
@@ -15,15 +17,15 @@ export function c(rules) {
         stylesheet.appendChild(document.createTextNode(css));
     }
 
-    if (typeof document === 'undefined' && css) {
-        cache = cache + css;
+    if (typeof document === 'undefined' && css && cache.css.indexOf(css) === -1) {
+        cache.css = cache.css + css;
     }
 
     return className;
 }
 
 export function styles() {
-    return cache;
+    return cache.css;
 }
 
 // @see https://github.com/jxnblk/object-style/blob/v1.0.3/src/index.js

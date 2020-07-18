@@ -107,3 +107,7 @@ typings/
 
 # IDE
 .idea
+
+# c-c
+styles.css
+macro/output

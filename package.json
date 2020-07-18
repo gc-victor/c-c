@@ -1,7 +1,7 @@
 {
   "name": "c-c",
   "version": "0.0.0",
-  "description": "Atomic CSS in JS at compile-time",
+  "description": "Atomic CSS in JS at run-time and compile-time",
   "main": "dist/c-c.js",
   "module": "dist/c-c.esm.js",
   "umd:main": "dist/c-c.umd.js",
@@ -15,14 +15,19 @@
   "keywords": [
     "atomic-classes",
     "atomic-css",
+    "compile-time",
     "css",
     "css-in-js",
     "functional-css",
+    "run-time",
     "utility-classes"
   ],
   "author": "Víctor García",
   "license": "MIT",
   "devDependencies": {
+    "@babel/cli": "7.10.5",
+    "@babel/core": "7.10.5",
+    "babel-plugin-macros": "2.8.0",
     "csstype": "2.6.10",
     "esm": "3.2.25",
     "prettier": "2.0.5",
