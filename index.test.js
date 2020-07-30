@@ -1,5 +1,5 @@
 const { expect, window, spyOn, test } = require('t-t');
-const { c, styles } = require('./index.js');
+const { c, styles } = require('./index');
 
 window('document', {
     cssRules: [],
@@ -66,13 +66,16 @@ test('should return classes names', () => {
 });
 
 test('should set rules to the stylesheet', () => {
-    expect(spy.args[0]).toBe(css);
+    expect(spy.args.join('')).toBe(css);
 });
 
 test('should return only new styles', () => {
+    // reset args
+    spy.args = [];
+
     c({ ...stylesheet, padding: '2rem' });
 
-    expect(spy.args[1]).toBe('.c4219101676{padding:2rem}');
+    expect(spy.args[0]).toBe('.c4219101676{padding:2rem}');
 });
 
 // Should be the last test
