@@ -110,7 +110,7 @@ c({
 
 - [goober](https://github.com/cristianbote/goober) for the [hash generator](https://github.com/cristianbote/goober/blob/v1/src/core/to-hash.js#L10) and some other ideas
 - [object-style](https://github.com/jxnblk/object-style/) is library the main piece of c-c
-- [cxs](https://github.com/cxs-css/cxs) for ideas to optimize parse
+- [cxs](https://github.com/cxs-css/cxs) for ideas to optimize object-style parse, and the benchmark
 - [tailwindcss](https://github.com/tailwindcss/tailwindcss) for their [config file](https://github.com/tailwindcss/tailwindcss/blob/v1.4.6/stubs/defaultConfig.stub.js) that is used as a reference to create the [styles.js](https://github.com/gc-victor/c-c/blob/master/styles.js)
 
 ## Compatible Versioning

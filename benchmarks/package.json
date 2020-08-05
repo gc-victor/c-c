@@ -1,0 +1,10 @@
+{
+  "author": "Víctor García",
+  "license": "MIT",
+  "devDependencies": {
+    "benchmark": "2.1.4",
+    "browser-env": "3.3.0",
+    "cxs": "6.2.0",
+    "goober": "2.0.3"
+  }
+}

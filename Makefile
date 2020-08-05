@@ -1,4 +1,4 @@
-.PHONY: test
+.PHONY: test benchmarks
 .DEFAULT_GOAL := help
 ARG=$(filter-out $@,$(MAKECMDGOALS))
 VERSION=$(shell node -p -e 'require("./package.json").version')
@@ -8,6 +8,9 @@ help: ## Show this help message
 	@echo
 	@echo 'Targets:'
 	@egrep '^(.+)\:\ ##\ (.+)' ${MAKEFILE_LIST} | column -t -c 2 -s ':#'
+
+benchmarks : ## Run benchmarks
+	NODE_ENV=production node -r esm benchmarks/index.js || exit $? ; \
 
 build : ## Build distribution files
 	rm -rf dist || exit $? ; \
