@@ -1,6 +1,6 @@
 # c-c
 
-Tiny CSS-in-JS atomic classes at run-time and compile-time.
+Tiny CSS-in-JS atomic classes at run-time.
 
 ## Let's Play
 
@@ -57,44 +57,12 @@ Returns:
 .c4218071375{padding:1rem}
 ```
 
-## Compile time
-
-You have to import the macro to use c-c at compile time.
-```javascript
-import { c } from 'c-c/macro';
-```
-
-You have to have installed [babeljs](https://babeljs.io/) and [babel-plugin-macros](https://github.com/kentcdodds/babel-plugin-macros) and add the last one
-to the babel plugins config.
-
-It will generate a `styles.css` file in your current working directory.
-
-Your code will be transformed from:
-
-```javascript
-import { c } from 'c-c/macro';
-
-const css0 = c({ padding: 0, margin: 0 });
-const css1 = c({ padding: '1rem' });
-const css2 = c({ padding: '1rem' });
-```
-
-To:
-
-```javascript
-const css0 = "c2343579090 c2342591469";
-const css1 = "c4218071375";
-const css2 = "c4218071375";
-```
-
-As you can see, the import is removed, and the classes names have replaced the function.
-
 ## Extra ball
 
 The [styles.js](https://github.com/gc-victor/c-c/blob/master/styles.js) file is a modified version of TailwindCSS config file to copy to your project and modify it to fit your needs.
 
 ````javascript
-import { color, fontSize, spacing } form './styles';
+import { color, fontSize, spacing } from './styles';
 
 c({
     color: color.black,
@@ -109,7 +77,7 @@ c({
 ### Inspiration
 
 - [goober](https://github.com/cristianbote/goober) for the [hash generator](https://github.com/cristianbote/goober/blob/v1/src/core/to-hash.js#L10) and some other ideas
-- [object-style](https://github.com/jxnblk/object-style/) is library the main piece of c-c
+- [object-style](https://github.com/jxnblk/object-style/) is the main piece of c-c
 - [cxs](https://github.com/cxs-css/cxs) for ideas to optimize object-style parse, and the benchmark
 - [tailwindcss](https://github.com/tailwindcss/tailwindcss) for their [config file](https://github.com/tailwindcss/tailwindcss/blob/v1.4.6/stubs/defaultConfig.stub.js) that is used as a reference to create the [styles.js](https://github.com/gc-victor/c-c/blob/master/styles.js)
 
@@ -138,7 +106,7 @@ If it hasn't, just open a [new clear and descriptive issue](../../issues/new).
 
 ### Commit message conventions
 
-A specification for adding human and machine readable meaning to commit messages.
+A specification for adding human and machine-readable meaning to commit messages.
 
 - [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
 
@@ -162,7 +130,7 @@ Pull requests are the greatest contributions, so be sure they are focused in sco
 
 [MIT License](https://github.com/gc-victor/c-c/blob/master/LICENSE)
 
-Copyright (c) 2020 Víctor García
+Copyright (c) 2021 Víctor García
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

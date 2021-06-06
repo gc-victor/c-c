@@ -25,12 +25,9 @@
   "author": "Víctor García",
   "license": "MIT",
   "devDependencies": {
-    "@babel/cli": "7.10.5",
-    "@babel/core": "7.10.5",
-    "babel-plugin-macros": "2.8.0",
     "csstype": "2.6.10",
     "esm": "3.2.25",
     "prettier": "2.0.5",
-    "t-t": "git+https://github.com/gc-victor/t-t.git#master"
+    "t-t": "git+https://github.com/gc-victor/t-t.git#main"
   }
 }
