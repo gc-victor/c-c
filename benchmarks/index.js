@@ -1,6 +1,5 @@
 import Benchmark from 'benchmark';
 
-// benchmark hates browser-env
 require('browser-env')();
 
 import { c } from '../index';

@@ -1,13 +1,23 @@
-const { expect, window, spyOn, test } = require('t-t');
+const { expect, window, spyOn, test: t } = require('t-t');
 const { c, styles } = require('./index');
 
+const test = t;
+// const only = t;
+// const test = () => {};
+
 window('document', {
+    appendChild: function () {},
+    attributes: {},
     cssRules: [],
-    'createElement.innerHTML': '',
     'createElement.appendChild': function (text) {
         this['createElement.innerHTML'] = this['createElement.innerHTML'] + text;
 
         return text;
+    },
+    'createElement.innerHTML': '',
+    'createElement.setAttribute': function ([name, value]) {
+        this.attributes = this.attributes || {};
+        this.attributes[name] = value;
     },
     body: {
         appendChild: function () {}
@@ -17,6 +27,7 @@ window('document', {
 
         return {
             appendChild: this['createElement.appendChild'],
+            setAttribute: this['createElement.setAttribute'],
             get innerHTML() {
                 return self['createElement.innerHTML'];
             }
@@ -24,6 +35,13 @@ window('document', {
     },
     createTextNode: function (text) {
         return text;
+    },
+    getElementById: function ([id]) {
+        if (this.attributes.id === id) return this;
+        return null;
+    },
+    reset: function () {
+        this['createElement.innerHTML'] = '';
     }
 });
 
@@ -59,23 +77,35 @@ const css =
 const className =
     'c4218071375 c3162900569 c551628051 c932719810 c1563729502 c953425557 c1563737885 c1197747141 c3507439765 c484032348 c2340731367 c867070755 c4195542496 c4274158499 c1333516654 c2249472333';
 
-const spy = spyOn(global.document, 'createElement.appendChild');
+const spyAppendChild = spyOn(global.document, 'createElement.appendChild');
+const spySetAttribute = spyOn(global.document, 'createElement.setAttribute');
+const spyGetElementById = spyOn(global.document, 'getElementById');
 
 test('should return classes names', () => {
     expect(c(stylesheet)).toBe(className);
 });
 
+test('should set the id', () => {
+    expect(spySetAttribute.args[0]).toBe('id');
+    expect(spySetAttribute.args[1]).toBe('c-c');
+});
+
+test('should get element by id c-c', () => {
+    expect(spyGetElementById.args[0]).toBe('c-c');
+    expect(spyGetElementById.count).toBe(1);
+});
+
 test('should set rules to the stylesheet', () => {
-    expect(spy.args.join('')).toBe(css);
+    expect(spyAppendChild.args.join('')).toBe(css);
 });
 
 test('should return only new styles', () => {
     // reset args
-    spy.args = [];
+    spyAppendChild.args = [];
 
     c({ ...stylesheet, padding: '2rem' });
 
-    expect(spy.args[0]).toBe('.c4219101676{padding:2rem}');
+    expect(spyAppendChild.args[0]).toBe('.c4219101676{padding:2rem}');
 });
 
 // Should be the last test

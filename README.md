@@ -4,7 +4,7 @@ Tiny CSS-in-JS atomic classes at run-time.
 
 ## Let's Play
 
-Create your first styles. Each declaration will return a class name and inject them to a stylesheet.
+Create your first styles. Each declaration will return a class name and inject them to a stylesheet with id "c-c".
 
 ```javascript
 c({
@@ -50,11 +50,20 @@ c({
 });
 ```
 
+## SSR
+
 Using `styles()` you will get all the styles for your Server Side Rendering (SSR) or Static Site Generation (SSG) projects.
 
 Returns:
+
 ```css
 .c4218071375{padding:1rem}
+```
+
+Set to a style tag with id "c-c" the styles:
+
+```html
+<style id="c-c">styles()</style>
 ```
 
 ## Extra ball

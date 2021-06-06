@@ -14,10 +14,13 @@ export function styles() {
 
 function insert(rule) {
     if (typeof document !== 'undefined') {
-        if (!stylesheet) {
+        if (!stylesheet && !document.getElementById('c-c')) {
             stylesheet = document.createElement('style');
 
+            stylesheet.setAttribute('id', 'c-c');
             document.body.appendChild(stylesheet);
+        } else if (!stylesheet) {
+            stylesheet = document.getElementById('c-c');
         }
 
         // @see: https://stackoverflow.com/a/28930990
