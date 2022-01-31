@@ -4,6 +4,13 @@ let cache = {
     classesNames: {}
 };
 
+const is = typeof global !== 'undefined' && {}.toString.call(global) === '[object global]';
+const isNodeJs = process.env.TEST ? false : is;
+
+if (!is) {
+    window.process = { env: { TEST: false } };
+}
+
 export function c(rules) {
     return parse(rules);
 }
@@ -13,7 +20,7 @@ export function styles() {
 }
 
 function insert(rule) {
-    if (typeof document !== 'undefined') {
+    if (!isNodeJs) {
         if (!stylesheet && !document.getElementById('c-c')) {
             stylesheet = document.createElement('style');
 
@@ -27,7 +34,7 @@ function insert(rule) {
         stylesheet.appendChild(document.createTextNode(rule));
     }
 
-    if (typeof document === 'undefined' && cache.css.indexOf(rule) === -1) {
+    if (isNodeJs && cache.css.indexOf(rule) === -1) {
         cache.css = cache.css + rule;
     }
 }

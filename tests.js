@@ -1,5 +1,5 @@
 const { expect, window, spyOn, test: t } = require('t-t');
-const { c, styles } = require('./index');
+const { c } = require('./index');
 
 const test = t;
 // const only = t;
@@ -106,12 +106,4 @@ test('should return only new styles', () => {
     c({ ...stylesheet, padding: '2rem' });
 
     expect(spyAppendChild.args[0]).toBe('.c4219101676{padding:2rem}');
-});
-
-// Should be the last test
-test('should extract the styles', () => {
-    window('document', undefined); // is Node.js
-    c({ padding: '3rem' });
-
-    expect(styles()).toBe('.c4220131977{padding:3rem}');
 });
